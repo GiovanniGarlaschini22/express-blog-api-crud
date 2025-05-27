@@ -1,5 +1,5 @@
 // IMPORT //
-import { architectures } from "../data.js";
+import architectures from "../data.js";
 
 // FUNZIONI //
 // funzione index //

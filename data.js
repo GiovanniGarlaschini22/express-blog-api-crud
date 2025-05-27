@@ -4,7 +4,7 @@ const architectures = [
     architectName: "Frank Lloyd Wright",
     buildingName: "Fallingwater",
     style: "Organic architecture",
-    year: 1939
+    year: "1939"
   },
   {
     id: "2",
@@ -35,3 +35,5 @@ const architectures = [
     year: "2003"
   }
 ];
+
+export default architectures;
