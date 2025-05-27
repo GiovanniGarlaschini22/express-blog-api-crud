@@ -5,6 +5,10 @@ import architecturesRouter from "./routers/architectures.js";
 // invoco funzione express //
 const app = express();
 
+
+// registro il bodyparser //
+app.use(express.json());
+
 // creo la porta di accesso //
 const port = 3000;
 
@@ -19,7 +23,7 @@ app.use("/architectures", architecturesRouter);
 
 // accesso cartella asset statici //
 app.use(express.static("public"));
-app.use(express.json());
+
 
 
 

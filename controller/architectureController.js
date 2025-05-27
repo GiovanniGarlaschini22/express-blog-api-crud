@@ -1,4 +1,5 @@
 // IMPORT //
+import { json } from "express";
 import architectures from "../data.js";
 
 // FUNZIONI //
@@ -14,6 +15,15 @@ const index = (req, res) => {
 const show = (req, res) => {
     const architecturesId = req.params.id;
     const arch = architectures.find((curArch) => curArch.id === architecturesId);
+    
+    // status 404 //
+    if (arch === undefined) {
+        res.status(404);
+        return res.json({
+            error: "Opera non trovata!"
+        });
+    }
+
     res.json({
         data: arch,
     });
@@ -21,18 +31,28 @@ const show = (req, res) => {
 
 // funzione store //
 const store = (req, res) => {
+
     const newArch = req.body;
+
+    console.log(req);
+        
     // aggiungo parseint //
     const lastId = parseInt(architectures[architectures.length - 1].id);
-    newArch.id = (lastId + 1).toString();
+    console.log(lastId);
+    
+    
+    let appendArch = {
+        id: (lastId + 1).toString(),
+        ...newArch
+    }
 
     // eseguo il push per aggiungere la nuova opera //
-    architectures.push(newArch);
+    architectures.push(appendArch);
 
     // imposto status 201 //
-    res.status(201);
+    //res.status(201);
     res.json({
-        data: newArch,
+        data: appendArch,
     });
 };
 
