@@ -19,6 +19,9 @@ app.use("/architectures", architecturesRouter);
 
 // accesso cartella asset statici //
 app.use(express.static("public"));
+app.use(express.json());
+
+
 
 // server in ascolto //
 app.listen(port, () => {

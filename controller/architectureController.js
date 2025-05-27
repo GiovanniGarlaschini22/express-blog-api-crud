@@ -21,8 +21,18 @@ const show = (req, res) => {
 
 // funzione store //
 const store = (req, res) => {
+    const newArch = req.body;
+    // aggiungo parseint //
+    const lastId = parseInt(architectures[architectures.length - 1].id);
+    newArch.id = (lastId + 1).toString();
+
+    // eseguo il push per aggiungere la nuova opera //
+    architectures.push(newArch);
+
+    // imposto status 201 //
+    res.status(201);
     res.json({
-        data: "Aggiungi una nuova opera",
+        data: newArch,
     });
 };
 
