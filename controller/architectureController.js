@@ -5,7 +5,7 @@ import architectures from "../data.js";
 // FUNZIONI //
 // funzione index //
 const index = (req, res) => {
-    
+
     res.json({
         data: architectures,
         count: architectures.length,
@@ -17,12 +17,8 @@ const show = (req, res) => {
     const architecturesId = req.params.id;
     const arch = architectures.find((curArch) => curArch.id === architecturesId);
     
-    // status 404 //
     if (arch === undefined) {
-        res.status(404);
-        return res.json({
-            error: "Opera non trovata!"
-        });
+       return routeNotFound(res);
     }
 
     res.json({

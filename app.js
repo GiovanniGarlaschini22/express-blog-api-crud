@@ -2,6 +2,7 @@
 import express from "express";
 import architecturesRouter from "./routers/architectures.js";
 import routeNotFound from "./middlewares/routeNotFound.js";
+import errorHandler from "./middlewares/errorHandler.js";
 
 // invoco funzione express //
 const app = express();
@@ -23,7 +24,7 @@ app.get("/", (req, res) => {
 
 app.use("/architectures", architecturesRouter);
 app.use(routeNotFound);
-
+app.use(errorHandler);
 
 // server in ascolto //
 app.listen(port, () => {
