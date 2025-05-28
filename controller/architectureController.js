@@ -5,6 +5,7 @@ import architectures from "../data.js";
 // FUNZIONI //
 // funzione index //
 const index = (req, res) => {
+    
     res.json({
         data: architectures,
         count: architectures.length,

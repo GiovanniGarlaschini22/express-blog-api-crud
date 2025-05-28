@@ -1,11 +1,13 @@
 // IMPORT //
 import express from "express";
 import architecturesRouter from "./routers/architectures.js";
+import routeNotFound from "./middlewares/routeNotFound.js";
 
 // invoco funzione express //
 const app = express();
 
-
+// accesso cartella asset statici //
+app.use(express.static("public"));
 // registro il bodyparser //
 app.use(express.json());
 
@@ -20,11 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/architectures", architecturesRouter);
-
-// accesso cartella asset statici //
-app.use(express.static("public"));
-
-
+app.use(routeNotFound);
 
 
 // server in ascolto //
